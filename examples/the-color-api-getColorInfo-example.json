@@ -1,0 +1,69 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://www.thecolorapi.com/id?hex=0047AB",
+    "parameters": {
+      "hex": "0047AB"
+    }
+  },
+  "response": {
+    "hex": {
+      "value": "#0047AB",
+      "clean": "0047AB"
+    },
+    "rgb": {
+      "fraction": { "r": 0.0, "g": 0.2784313725490196, "b": 0.6705882352941176 },
+      "r": 0,
+      "g": 71,
+      "b": 171,
+      "value": "rgb(0, 71, 171)"
+    },
+    "hsl": {
+      "fraction": { "h": 0.5972222222222222, "s": 1.0, "l": 0.3352941176470588 },
+      "h": 215,
+      "s": 100,
+      "l": 34,
+      "value": "hsl(215, 100%, 34%)"
+    },
+    "hsv": {
+      "fraction": { "h": 0.5972222222222222, "s": 1.0, "v": 0.6705882352941176 },
+      "h": 215,
+      "s": 100,
+      "v": 67,
+      "value": "hsv(215, 100%, 67%)"
+    },
+    "cmyk": {
+      "fraction": { "c": 1.0, "m": 0.5847953216374269, "y": 0.0, "k": 0.32941176470588235 },
+      "c": 100,
+      "m": 58,
+      "y": 0,
+      "k": 33,
+      "value": "cmyk(100, 58, 0, 33)"
+    },
+    "XYZ": {
+      "fraction": { "X": 0.11424620627830604, "Y": 0.08812470553697721, "Z": 0.44285498723786095 },
+      "X": 11,
+      "Y": 9,
+      "Z": 44,
+      "value": "XYZ(11, 9, 44)"
+    },
+    "name": {
+      "value": "Cobalt Blue",
+      "closest_named_hex": "#0047AB",
+      "exact_match_name": true,
+      "distance": 0
+    },
+    "image": {
+      "bare": "https://www.thecolorapi.com/id?format=svg&named=false&hex=0047AB",
+      "named": "https://www.thecolorapi.com/id?format=svg&hex=0047AB"
+    },
+    "contrast": {
+      "value": "#ffffff"
+    },
+    "links": {
+      "self": {
+        "href": "https://www.thecolorapi.com/id?hex=0047AB"
+      }
+    }
+  }
+}

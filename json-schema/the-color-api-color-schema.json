@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/the-color-api/main/json-schema/the-color-api-color-schema.json",
+  "title": "Color API Color Object",
+  "description": "Full color information returned by The Color API, including all format conversions, name, and image references.",
+  "type": "object",
+  "properties": {
+    "hex": {
+      "type": "object",
+      "description": "Color in hexadecimal format.",
+      "properties": {
+        "value": { "type": "string", "description": "Hex color with # prefix (e.g., #0047AB)." },
+        "clean": { "type": "string", "description": "Hex color without # prefix (e.g., 0047AB)." }
+      },
+      "required": ["value", "clean"]
+    },
+    "rgb": {
+      "type": "object",
+      "description": "Color in RGB (Red, Green, Blue) format.",
+      "properties": {
+        "fraction": {
+          "type": "object",
+          "properties": {
+            "r": { "type": "number" },
+            "g": { "type": "number" },
+            "b": { "type": "number" }
+          }
+        },
+        "r": { "type": "integer", "minimum": 0, "maximum": 255 },
+        "g": { "type": "integer", "minimum": 0, "maximum": 255 },
+        "b": { "type": "integer", "minimum": 0, "maximum": 255 },
+        "value": { "type": "string", "description": "Formatted string e.g., rgb(0,71,171)." }
+      },
+      "required": ["r", "g", "b", "value"]
+    },
+    "hsl": {
+      "type": "object",
+      "description": "Color in HSL (Hue, Saturation, Lightness) format.",
+      "properties": {
+        "fraction": {
+          "type": "object",
+          "properties": {
+            "h": { "type": "number" },
+            "s": { "type": "number" },
+            "l": { "type": "number" }
+          }
+        },
+        "h": { "type": "integer", "minimum": 0, "maximum": 360 },
+        "s": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "l": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "value": { "type": "string", "description": "Formatted string e.g., hsl(215,100%,34%)." }
+      },
+      "required": ["h", "s", "l", "value"]
+    },
+    "hsv": {
+      "type": "object",
+      "description": "Color in HSV (Hue, Saturation, Value) format.",
+      "properties": {
+        "fraction": {
+          "type": "object",
+          "properties": {
+            "h": { "type": "number" },
+            "s": { "type": "number" },
+            "v": { "type": "number" }
+          }
+        },
+        "h": { "type": "integer" },
+        "s": { "type": "integer" },
+        "v": { "type": "integer" },
+        "value": { "type": "string" }
+      }
+    },
+    "cmyk": {
+      "type": "object",
+      "description": "Color in CMYK (Cyan, Magenta, Yellow, Key/Black) print format.",
+      "properties": {
+        "fraction": {
+          "type": "object",
+          "properties": {
+            "c": { "type": "number" },
+            "m": { "type": "number" },
+            "y": { "type": "number" },
+            "k": { "type": "number" }
+          }
+        },
+        "c": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "m": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "y": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "k": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "value": { "type": "string", "description": "Formatted string e.g., cmyk(100,58,0,33)." }
+      }
+    },
+    "XYZ": {
+      "type": "object",
+      "description": "Color in CIE XYZ color space.",
+      "properties": {
+        "fraction": {
+          "type": "object",
+          "properties": {
+            "X": { "type": "number" },
+            "Y": { "type": "number" },
+            "Z": { "type": "number" }
+          }
+        },
+        "X": { "type": "integer" },
+        "Y": { "type": "integer" },
+        "Z": { "type": "integer" },
+        "value": { "type": "string" }
+      }
+    },
+    "name": {
+      "type": "object",
+      "description": "Nearest named color information.",
+      "properties": {
+        "value": { "type": "string", "description": "Name of the nearest named color." },
+        "closest_named_hex": { "type": "string", "description": "Hex value of the closest named color." },
+        "exact_match_name": { "type": "boolean", "description": "True if the input exactly matches the named color." },
+        "distance": { "type": "integer", "description": "Color distance from the nearest named color." }
+      },
+      "required": ["value", "exact_match_name"]
+    },
+    "image": {
+      "type": "object",
+      "description": "URLs to color swatch images.",
+      "properties": {
+        "bare": { "type": "string", "format": "uri" },
+        "named": { "type": "string", "format": "uri" }
+      }
+    },
+    "contrast": {
+      "type": "object",
+      "description": "Recommended contrast color for text on this background.",
+      "properties": {
+        "value": { "type": "string", "description": "Hex contrast color (#ffffff or #000000)." }
+      }
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "object",
+          "properties": {
+            "href": { "type": "string", "format": "uri" }
+          }
+        }
+      }
+    }
+  },
+  "required": ["hex", "rgb", "hsl", "name"]
+}

@@ -1,0 +1,59 @@
+{
+  "title": "Color API Scheme Response Structure",
+  "description": "The structure of the response from GET /scheme, describing the seed color, generated palette, and scheme navigation links.",
+  "type": "object",
+  "structure": {
+    "mode": {
+      "type": "string",
+      "description": "The scheme mode used (monochrome, complement, analogic, triad, quad, etc.)."
+    },
+    "count": {
+      "type": "integer",
+      "description": "Number of colors in the generated scheme."
+    },
+    "colors": {
+      "type": "array",
+      "description": "Array of color objects — each has hex, rgb, hsl, hsv, cmyk, XYZ, name, image, and contrast.",
+      "items": {
+        "hex": { "value": "string", "clean": "string" },
+        "rgb": { "r": "integer", "g": "integer", "b": "integer", "value": "string" },
+        "hsl": { "h": "integer", "s": "integer", "l": "integer", "value": "string" },
+        "hsv": { "h": "integer", "s": "integer", "v": "integer", "value": "string" },
+        "cmyk": { "c": "integer", "m": "integer", "y": "integer", "k": "integer", "value": "string" },
+        "XYZ": { "X": "integer", "Y": "integer", "Z": "integer", "value": "string" },
+        "name": { "value": "string", "closest_named_hex": "string", "exact_match_name": "boolean", "distance": "integer" },
+        "image": { "bare": "uri", "named": "uri" },
+        "contrast": { "value": "string" }
+      }
+    },
+    "seed": {
+      "type": "object",
+      "description": "The input seed color with full color information (same structure as a color object)."
+    },
+    "image": {
+      "type": "object",
+      "description": "Scheme swatch image URLs.",
+      "children": {
+        "bare": { "type": "string", "description": "URL for bare scheme swatch." },
+        "named": { "type": "string", "description": "URL for named scheme swatch." }
+      }
+    },
+    "links": {
+      "type": "object",
+      "description": "Hypermedia links to the current scheme and all available scheme mode variants.",
+      "children": {
+        "self": { "href": "uri" },
+        "schemes": {
+          "monochrome": { "href": "uri" },
+          "monochrome-dark": { "href": "uri" },
+          "monochrome-light": { "href": "uri" },
+          "analogic": { "href": "uri" },
+          "complement": { "href": "uri" },
+          "analogic-complement": { "href": "uri" },
+          "triad": { "href": "uri" },
+          "quad": { "href": "uri" }
+        }
+      }
+    }
+  }
+}

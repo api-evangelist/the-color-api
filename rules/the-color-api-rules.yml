@@ -1,0 +1,81 @@
+extends: spectral:oas
+rules:
+  colorapi-operations-must-have-tags:
+    description: All Color API operations must be tagged (Colors or Schemes).
+    severity: warn
+    given: "$.paths[*][get]"
+    then:
+      field: tags
+      function: truthy
+
+  colorapi-operations-must-have-operationid:
+    description: All operations must define an operationId.
+    severity: error
+    given: "$.paths[*][get]"
+    then:
+      field: operationId
+      function: truthy
+
+  colorapi-operations-must-have-summary:
+    description: All operations must have a summary in Title Case.
+    severity: warn
+    given: "$.paths[*][get]"
+    then:
+      field: summary
+      function: truthy
+
+  colorapi-color-input-params-must-have-examples:
+    description: Color input parameters (hex, rgb, hsl, cmyk) should include examples.
+    severity: warn
+    given: "$.paths[*][get].parameters[?(@.name == 'hex' || @.name == 'rgb' || @.name == 'hsl' || @.name == 'cmyk')]"
+    then:
+      field: example
+      function: truthy
+
+  colorapi-format-param-must-use-enum:
+    description: The format parameter must constrain values to json, html, or svg.
+    severity: error
+    given: "$.paths[*][get].parameters[?(@.name == 'format')].schema"
+    then:
+      field: enum
+      function: truthy
+
+  colorapi-scheme-mode-must-use-enum:
+    description: The mode parameter must constrain values to the supported scheme modes.
+    severity: error
+    given: "$.paths[*][get].parameters[?(@.name == 'mode')].schema"
+    then:
+      field: enum
+      function: truthy
+
+  colorapi-responses-must-include-200:
+    description: All operations must define a 200 success response.
+    severity: error
+    given: "$.paths[*][get].responses"
+    then:
+      field: "200"
+      function: truthy
+
+  colorapi-responses-must-include-400:
+    description: All operations must define a 400 error response for invalid color input.
+    severity: warn
+    given: "$.paths[*][get].responses"
+    then:
+      field: "400"
+      function: truthy
+
+  colorapi-parameters-must-have-descriptions:
+    description: All query parameters must have descriptions.
+    severity: warn
+    given: "$.paths[*][get].parameters[*]"
+    then:
+      field: description
+      function: truthy
+
+  colorapi-responses-must-define-content-schema:
+    description: All 200 responses must reference a schema.
+    severity: warn
+    given: "$.paths[*][get].responses.200.content.application/json"
+    then:
+      field: schema
+      function: truthy

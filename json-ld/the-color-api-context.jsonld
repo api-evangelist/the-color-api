@@ -1,0 +1,107 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "colorapi": "https://www.thecolorapi.com/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+
+    "Color": {
+      "@id": "colorapi:Color"
+    },
+    "ColorScheme": {
+      "@id": "colorapi:ColorScheme"
+    },
+
+    "hex": {
+      "@id": "colorapi:hex"
+    },
+    "rgb": {
+      "@id": "colorapi:rgb"
+    },
+    "hsl": {
+      "@id": "colorapi:hsl"
+    },
+    "hsv": {
+      "@id": "colorapi:hsv"
+    },
+    "cmyk": {
+      "@id": "colorapi:cmyk"
+    },
+    "XYZ": {
+      "@id": "colorapi:XYZ"
+    },
+
+    "value": {
+      "@id": "schema:value"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "image": {
+      "@id": "schema:image"
+    },
+    "contrast": {
+      "@id": "colorapi:contrast"
+    },
+
+    "mode": {
+      "@id": "colorapi:schemeMode",
+      "skos:definition": "Color wheel relationship used to generate a palette (monochrome, complement, analogic, triad, quad, etc.)"
+    },
+    "count": {
+      "@id": "schema:numberOfItems",
+      "@type": "xsd:integer"
+    },
+    "colors": {
+      "@id": "colorapi:colors",
+      "@container": "@set"
+    },
+    "seed": {
+      "@id": "colorapi:seedColor"
+    },
+
+    "r": {
+      "@id": "colorapi:red",
+      "@type": "xsd:integer"
+    },
+    "g": {
+      "@id": "colorapi:green",
+      "@type": "xsd:integer"
+    },
+    "b": {
+      "@id": "colorapi:blue",
+      "@type": "xsd:integer"
+    },
+    "h": {
+      "@id": "colorapi:hue",
+      "@type": "xsd:integer"
+    },
+    "s": {
+      "@id": "colorapi:saturation",
+      "@type": "xsd:integer"
+    },
+    "l": {
+      "@id": "colorapi:lightness",
+      "@type": "xsd:integer"
+    },
+
+    "exact_match_name": {
+      "@id": "colorapi:exactMatchName",
+      "@type": "xsd:boolean"
+    },
+    "closest_named_hex": {
+      "@id": "colorapi:closestNamedHex"
+    },
+    "distance": {
+      "@id": "colorapi:colorDistance",
+      "@type": "xsd:integer"
+    },
+
+    "links": {
+      "@id": "schema:url",
+      "@container": "@set"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Color Design Tools"
+  description: >-
+    Workflow capability for color lookup, format conversion, and palette generation
+    using The Color API. Supports designers, developers building color pickers,
+    design system maintainers, and AI assistants needing color information.
+  tags:
+    - Colors
+    - Design
+    - Design Tokens
+    - Utilities
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+capability:
+  consumes:
+    - import: colorapi
+      location: ./shared/the-color-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: color-design-api
+      description: "Unified REST API for color identification, conversion, and scheme generation."
+      resources:
+        - path: /v1/colors
+          name: colors
+          description: Identify a color and get all format conversions and naming information.
+          operations:
+            - method: GET
+              name: get-color-info
+              description: Get comprehensive color data including all format conversions, named color, and contrast.
+              call: "colorapi.get-color-info"
+              with:
+                hex: "rest.hex"
+                rgb: "rest.rgb"
+                hsl: "rest.hsl"
+                cmyk: "rest.cmyk"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/schemes
+          name: schemes
+          description: Generate harmonious color palettes from a seed color.
+          operations:
+            - method: GET
+              name: get-color-scheme
+              description: Generate a color scheme using a specified color-wheel mode.
+              call: "colorapi.get-color-scheme"
+              with:
+                hex: "rest.hex"
+                rgb: "rest.rgb"
+                mode: "rest.mode"
+                count: "rest.count"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: color-design-mcp
+      transport: http
+      description: "MCP server for AI-assisted color lookup, conversion, and design palette generation."
+      tools:
+        - name: identify-color
+          description: >-
+            Identify any color by hex, RGB, HSL, or CMYK input and receive full format conversions,
+            nearest color name, contrast recommendation, and image swatch URLs.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "colorapi.get-color-info"
+          with:
+            hex: "tools.hex"
+            rgb: "tools.rgb"
+            hsl: "tools.hsl"
+            cmyk: "tools.cmyk"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: generate-color-scheme
+          description: >-
+            Generate a harmonious color palette from a seed color using color-wheel theory.
+            Supports monochrome, monochrome-dark, monochrome-light, analogic, complement,
+            analogic-complement, triad, and quad modes.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "colorapi.get-color-scheme"
+          with:
+            hex: "tools.hex"
+            rgb: "tools.rgb"
+            hsl: "tools.hsl"
+            mode: "tools.mode"
+            count: "tools.count"
+          outputParameters:
+            - type: object
+              mapping: "$."

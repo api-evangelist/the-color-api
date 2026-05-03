@@ -1,0 +1,56 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://www.thecolorapi.com/scheme?hex=0047AB&mode=analogic&count=4",
+    "parameters": {
+      "hex": "0047AB",
+      "mode": "analogic",
+      "count": 4
+    }
+  },
+  "response": {
+    "mode": "analogic",
+    "count": 4,
+    "colors": [
+      {
+        "hex": { "value": "#0047AB", "clean": "0047AB" },
+        "rgb": { "r": 0, "g": 71, "b": 171, "value": "rgb(0, 71, 171)" },
+        "hsl": { "h": 215, "s": 100, "l": 34, "value": "hsl(215, 100%, 34%)" },
+        "name": { "value": "Cobalt Blue", "closest_named_hex": "#0047AB", "exact_match_name": true, "distance": 0 }
+      },
+      {
+        "hex": { "value": "#0079AB", "clean": "0079AB" },
+        "rgb": { "r": 0, "g": 121, "b": 171, "value": "rgb(0, 121, 171)" },
+        "hsl": { "h": 199, "s": 100, "l": 34, "value": "hsl(199, 100%, 34%)" },
+        "name": { "value": "Cerulean Blue", "closest_named_hex": "#2A52BE", "exact_match_name": false, "distance": 21 }
+      },
+      {
+        "hex": { "value": "#000FAB", "clean": "000FAB" },
+        "rgb": { "r": 0, "g": 15, "b": 171, "value": "rgb(0, 15, 171)" },
+        "hsl": { "h": 235, "s": 100, "l": 34, "value": "hsl(235, 100%, 34%)" },
+        "name": { "value": "Darkblue", "closest_named_hex": "#00008B", "exact_match_name": false, "distance": 16 }
+      },
+      {
+        "hex": { "value": "#0000AB", "clean": "0000AB" },
+        "rgb": { "r": 0, "g": 0, "b": 171, "value": "rgb(0, 0, 171)" },
+        "hsl": { "h": 240, "s": 100, "l": 34, "value": "hsl(240, 100%, 34%)" },
+        "name": { "value": "Dark Blue", "closest_named_hex": "#00008B", "exact_match_name": false, "distance": 21 }
+      }
+    ],
+    "seed": {
+      "hex": { "value": "#0047AB", "clean": "0047AB" },
+      "rgb": { "r": 0, "g": 71, "b": 171, "value": "rgb(0, 71, 171)" },
+      "hsl": { "h": 215, "s": 100, "l": 34, "value": "hsl(215, 100%, 34%)" },
+      "name": { "value": "Cobalt Blue", "closest_named_hex": "#0047AB", "exact_match_name": true, "distance": 0 }
+    },
+    "image": {
+      "bare": "https://www.thecolorapi.com/scheme?format=svg&named=false&hex=0047AB&mode=analogic&count=4",
+      "named": "https://www.thecolorapi.com/scheme?format=svg&hex=0047AB&mode=analogic&count=4"
+    },
+    "links": {
+      "self": {
+        "href": "https://www.thecolorapi.com/scheme?hex=0047AB&mode=analogic&count=4"
+      }
+    }
+  }
+}
