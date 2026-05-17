@@ -60,7 +60,7 @@ common:
     url: https://www.thecolorapi.com/
   - type: Documentation
     url: https://www.thecolorapi.com/docs
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/joshbeckman
   - type: OpenAPI
     url: >-
