@@ -1,0 +1,130 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: The Color API — Schemes
+  description: 'The Color API — Schemes. 1 operations. Lead operation: Get Color Scheme. Self-contained Naftiko capability
+    covering one The Color Api business surface.'
+  tags:
+  - The Color Api
+  - Schemes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    THE_COLOR_API_API_KEY: THE_COLOR_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: the-color-schemes
+    baseUri: https://www.thecolorapi.com
+    description: The Color API — Schemes business capability. Self-contained, no shared references.
+    resources:
+    - name: scheme
+      path: /scheme
+      operations:
+      - name: getcolorscheme
+        method: GET
+        description: Get Color Scheme
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: hex
+          in: query
+          type: string
+          description: Seed color as hex code without
+        - name: rgb
+          in: query
+          type: string
+          description: Seed color as RGB (e.g., 0,71,171).
+        - name: hsl
+          in: query
+          type: string
+          description: Seed color as HSL (e.g., 215,100%,34%).
+        - name: cmyk
+          in: query
+          type: string
+          description: Seed color as CMYK (e.g., 100,58,0,33).
+        - name: mode
+          in: query
+          type: string
+          description: Color scheme generation mode based on color-wheel relationships.
+        - name: count
+          in: query
+          type: integer
+          description: Number of colors to include in the scheme.
+        - name: format
+          in: query
+          type: string
+          description: Response format.
+        - name: w
+          in: query
+          type: integer
+          description: Image width in pixels for SVG format.
+        - name: named
+          in: query
+          type: boolean
+          description: Include color names on SVG images.
+        - name: callback
+          in: query
+          type: string
+          description: JSONP callback function name.
+  exposes:
+  - type: rest
+    namespace: the-color-schemes-rest
+    port: 8080
+    description: REST adapter for The Color API — Schemes. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/scheme
+      name: scheme
+      description: REST surface for scheme.
+      operations:
+      - method: GET
+        name: getcolorscheme
+        description: Get Color Scheme
+        call: the-color-schemes.getcolorscheme
+        with:
+          hex: rest.hex
+          rgb: rest.rgb
+          hsl: rest.hsl
+          cmyk: rest.cmyk
+          mode: rest.mode
+          count: rest.count
+          format: rest.format
+          w: rest.w
+          named: rest.named
+          callback: rest.callback
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: the-color-schemes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for The Color API — Schemes. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-color-scheme
+      description: Get Color Scheme
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: the-color-schemes.getcolorscheme
+      with:
+        hex: tools.hex
+        rgb: tools.rgb
+        hsl: tools.hsl
+        cmyk: tools.cmyk
+        mode: tools.mode
+        count: tools.count
+        format: tools.format
+        w: tools.w
+        named: tools.named
+        callback: tools.callback
+      outputParameters:
+      - type: object
+        mapping: $.
