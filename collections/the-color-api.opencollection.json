@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "The Color API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Colors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Color Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.thecolorapi.com/id",
+            "params": [
+              {
+                "name": "hex",
+                "value": "0047AB",
+                "type": "query",
+                "description": "Color as a hex code without the"
+              },
+              {
+                "name": "rgb",
+                "value": "0,71,171",
+                "type": "query",
+                "description": "Color as comma-separated RGB values (e.g., 0,71,171) or rgb(0,71,171)."
+              },
+              {
+                "name": "hsl",
+                "value": "215,100%,34%",
+                "type": "query",
+                "description": "Color as HSL values (e.g., 215,100%,34%) or hsl(215,100%,34%)."
+              },
+              {
+                "name": "cmyk",
+                "value": "100,58,0,33",
+                "type": "query",
+                "description": "Color as CMYK values (e.g., 100,58,0,33) or cmyk(100,58,0,33)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format."
+              },
+              {
+                "name": "w",
+                "value": "",
+                "type": "query",
+                "description": "Image width in pixels for SVG format responses."
+              },
+              {
+                "name": "named",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include the color name on SVG image outputs."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP callback function name."
+              }
+            ]
+          },
+          "docs": "Retrieve comprehensive information for a color provided in any supported format (hex, RGB, HSL, or CMYK). Returns conversions to all other color formats, the nearest named color, image URLs, and contrast color."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Schemes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Color Scheme",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.thecolorapi.com/scheme",
+            "params": [
+              {
+                "name": "hex",
+                "value": "0047AB",
+                "type": "query",
+                "description": "Seed color as hex code without"
+              },
+              {
+                "name": "rgb",
+                "value": "",
+                "type": "query",
+                "description": "Seed color as RGB (e.g., 0,71,171)."
+              },
+              {
+                "name": "hsl",
+                "value": "",
+                "type": "query",
+                "description": "Seed color as HSL (e.g., 215,100%,34%)."
+              },
+              {
+                "name": "cmyk",
+                "value": "",
+                "type": "query",
+                "description": "Seed color as CMYK (e.g., 100,58,0,33)."
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Color scheme generation mode based on color-wheel relationships."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of colors to include in the scheme."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format."
+              },
+              {
+                "name": "w",
+                "value": "",
+                "type": "query",
+                "description": "Image width in pixels for SVG format."
+              },
+              {
+                "name": "named",
+                "value": "",
+                "type": "query",
+                "description": "Include color names on SVG images."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP callback function name."
+              }
+            ]
+          },
+          "docs": "Generate a harmonious color scheme from a seed color using color-wheel relationships. Supports monochrome, analogic, complement, triad, quad, and other scheme modes. Returns an array of color objects plus hypermedia links to all alternative scheme modes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
