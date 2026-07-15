@@ -54,6 +54,8 @@ apis:
       - CSS Preprocessor Tooling
       - Design System Management
 common:
+  - type: AgenticAccess
+    url: agentic-access/the-color-api-agentic-access.yml
   - type: DomainSecurity
     url: security/the-color-api-domain-security.yml
   - type: Website
