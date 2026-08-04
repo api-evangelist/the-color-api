@@ -1,0 +1,16 @@
+{
+  "provider": "the-color-api",
+  "sources": [
+    "the-color-api-colors-api-openapi.yml",
+    "the-color-api-schemes-api-openapi.yml"
+  ],
+  "outputs": [
+    "the-color-api-colors-api-openapi.yml",
+    "the-color-api-schemes-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

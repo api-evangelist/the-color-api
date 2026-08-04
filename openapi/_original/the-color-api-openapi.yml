@@ -1,0 +1,472 @@
+openapi: 3.0.3
+info:
+  title: The Color API
+  description: >-
+    The Color API is a free, public REST API for color data. Pass in any valid
+    color in hex, RGB, HSL, or CMYK format and receive full color information
+    including conversions to all other formats, the nearest named color, placeholder
+    image URLs, and harmonious color schemes generated using color-wheel relationships.
+  version: 1.0.0
+  contact:
+    name: The Color API
+    url: https://www.thecolorapi.com/
+  license:
+    name: Free Public API
+    url: https://www.thecolorapi.com/
+servers:
+  - url: https://www.thecolorapi.com
+    description: The Color API Production Server
+paths:
+  /id:
+    get:
+      operationId: getColorInfo
+      summary: Get Color Information
+      description: >-
+        Retrieve comprehensive information for a color provided in any supported
+        format (hex, RGB, HSL, or CMYK). Returns conversions to all other color
+        formats, the nearest named color, image URLs, and contrast color.
+      tags:
+        - Colors
+      parameters:
+        - name: hex
+          in: query
+          required: false
+          description: Color as a hex code without the # prefix (e.g., 0047AB).
+          schema:
+            type: string
+          example: 0047AB
+        - name: rgb
+          in: query
+          required: false
+          description: Color as comma-separated RGB values (e.g., 0,71,171) or rgb(0,71,171).
+          schema:
+            type: string
+          example: '0,71,171'
+        - name: hsl
+          in: query
+          required: false
+          description: Color as HSL values (e.g., 215,100%,34%) or hsl(215,100%,34%).
+          schema:
+            type: string
+          example: '215,100%,34%'
+        - name: cmyk
+          in: query
+          required: false
+          description: Color as CMYK values (e.g., 100,58,0,33) or cmyk(100,58,0,33).
+          schema:
+            type: string
+          example: '100,58,0,33'
+        - name: format
+          in: query
+          required: false
+          description: Response format.
+          schema:
+            type: string
+            enum:
+              - json
+              - html
+              - svg
+            default: json
+        - name: w
+          in: query
+          required: false
+          description: Image width in pixels for SVG format responses.
+          schema:
+            type: integer
+            default: 100
+        - name: named
+          in: query
+          required: false
+          description: Whether to include the color name on SVG image outputs.
+          schema:
+            type: boolean
+            default: true
+        - name: callback
+          in: query
+          required: false
+          description: JSONP callback function name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Full color information including all format conversions, name, and images.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ColorInfo'
+        '400':
+          description: Bad request — no color parameters provided or invalid values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /scheme:
+    get:
+      operationId: getColorScheme
+      summary: Get Color Scheme
+      description: >-
+        Generate a harmonious color scheme from a seed color using color-wheel
+        relationships. Supports monochrome, analogic, complement, triad, quad,
+        and other scheme modes. Returns an array of color objects plus hypermedia
+        links to all alternative scheme modes.
+      tags:
+        - Schemes
+      parameters:
+        - name: hex
+          in: query
+          required: false
+          description: Seed color as hex code without # (e.g., 0047AB).
+          schema:
+            type: string
+          example: 0047AB
+        - name: rgb
+          in: query
+          required: false
+          description: Seed color as RGB (e.g., 0,71,171).
+          schema:
+            type: string
+        - name: hsl
+          in: query
+          required: false
+          description: Seed color as HSL (e.g., 215,100%,34%).
+          schema:
+            type: string
+        - name: cmyk
+          in: query
+          required: false
+          description: Seed color as CMYK (e.g., 100,58,0,33).
+          schema:
+            type: string
+        - name: mode
+          in: query
+          required: false
+          description: Color scheme generation mode based on color-wheel relationships.
+          schema:
+            type: string
+            enum:
+              - monochrome
+              - monochrome-dark
+              - monochrome-light
+              - analogic
+              - complement
+              - analogic-complement
+              - triad
+              - quad
+            default: monochrome
+        - name: count
+          in: query
+          required: false
+          description: Number of colors to include in the scheme.
+          schema:
+            type: integer
+            default: 5
+            minimum: 1
+            maximum: 10
+        - name: format
+          in: query
+          required: false
+          description: Response format.
+          schema:
+            type: string
+            enum:
+              - json
+              - html
+              - svg
+            default: json
+        - name: w
+          in: query
+          required: false
+          description: Image width in pixels for SVG format.
+          schema:
+            type: integer
+            default: 100
+        - name: named
+          in: query
+          required: false
+          description: Include color names on SVG images.
+          schema:
+            type: boolean
+            default: true
+        - name: callback
+          in: query
+          required: false
+          description: JSONP callback function name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Generated color scheme with seed color, resulting colors, and scheme links.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ColorScheme'
+        '400':
+          description: Bad request — missing or invalid color input.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    ColorInfo:
+      type: object
+      description: Full color information including all format conversions, naming, and image references.
+      properties:
+        hex:
+          type: object
+          description: Color in hexadecimal format.
+          properties:
+            value:
+              type: string
+              description: Hex color value with # prefix (e.g., #0047AB).
+            clean:
+              type: string
+              description: Hex color value without # prefix (e.g., 0047AB).
+        rgb:
+          type: object
+          description: Color in RGB format.
+          properties:
+            fraction:
+              type: object
+              properties:
+                r:
+                  type: number
+                  format: float
+                g:
+                  type: number
+                  format: float
+                b:
+                  type: number
+                  format: float
+            r:
+              type: integer
+              description: Red channel (0-255).
+            g:
+              type: integer
+              description: Green channel (0-255).
+            b:
+              type: integer
+              description: Blue channel (0-255).
+            value:
+              type: string
+              description: Formatted RGB string (e.g., rgb(0,71,171)).
+        hsl:
+          type: object
+          description: Color in HSL (Hue, Saturation, Lightness) format.
+          properties:
+            fraction:
+              type: object
+              properties:
+                h:
+                  type: number
+                  format: float
+                s:
+                  type: number
+                  format: float
+                l:
+                  type: number
+                  format: float
+            h:
+              type: integer
+              description: Hue (0-360 degrees).
+            s:
+              type: integer
+              description: Saturation (0-100%).
+            l:
+              type: integer
+              description: Lightness (0-100%).
+            value:
+              type: string
+              description: Formatted HSL string (e.g., hsl(215,100%,34%)).
+        hsv:
+          type: object
+          description: Color in HSV (Hue, Saturation, Value) format.
+          properties:
+            fraction:
+              type: object
+              properties:
+                h:
+                  type: number
+                  format: float
+                s:
+                  type: number
+                  format: float
+                v:
+                  type: number
+                  format: float
+            h:
+              type: integer
+            s:
+              type: integer
+            v:
+              type: integer
+            value:
+              type: string
+        cmyk:
+          type: object
+          description: Color in CMYK (Cyan, Magenta, Yellow, Key/Black) format.
+          properties:
+            fraction:
+              type: object
+              properties:
+                c:
+                  type: number
+                  format: float
+                m:
+                  type: number
+                  format: float
+                y:
+                  type: number
+                  format: float
+                k:
+                  type: number
+                  format: float
+            c:
+              type: integer
+              description: Cyan channel (0-100%).
+            m:
+              type: integer
+              description: Magenta channel (0-100%).
+            y:
+              type: integer
+              description: Yellow channel (0-100%).
+            k:
+              type: integer
+              description: Key/Black channel (0-100%).
+            value:
+              type: string
+              description: Formatted CMYK string (e.g., cmyk(100,58,0,33)).
+        XYZ:
+          type: object
+          description: Color in CIE XYZ color space.
+          properties:
+            fraction:
+              type: object
+              properties:
+                X:
+                  type: number
+                  format: float
+                Y:
+                  type: number
+                  format: float
+                Z:
+                  type: number
+                  format: float
+            X:
+              type: integer
+            Y:
+              type: integer
+            Z:
+              type: integer
+            value:
+              type: string
+        name:
+          type: object
+          description: Nearest named color.
+          properties:
+            value:
+              type: string
+              description: Name of the nearest color (e.g., Cobalt Blue).
+            closest_named_hex:
+              type: string
+              description: Hex value of the closest named color.
+            exact_match_name:
+              type: boolean
+              description: True if the input color exactly matches the named color.
+            distance:
+              type: integer
+              description: Distance from the input color to the nearest named color.
+        image:
+          type: object
+          description: URLs to color image swatches.
+          properties:
+            bare:
+              type: string
+              format: uri
+              description: URL for a bare color swatch image.
+            named:
+              type: string
+              format: uri
+              description: URL for a named color swatch image.
+        contrast:
+          type: object
+          description: Recommended contrast color for use with this color as a background.
+          properties:
+            value:
+              type: string
+              description: Contrast color hex value (e.g., #ffffff or #000000).
+        links:
+          type: object
+          description: Hypermedia links to related resources.
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  format: uri
+      required:
+        - hex
+        - rgb
+        - hsl
+        - name
+    ColorScheme:
+      type: object
+      description: A generated color scheme with seed color, resulting colors, and navigation links.
+      properties:
+        mode:
+          type: string
+          description: The color scheme mode used to generate this palette.
+          enum:
+            - monochrome
+            - monochrome-dark
+            - monochrome-light
+            - analogic
+            - complement
+            - analogic-complement
+            - triad
+            - quad
+        count:
+          type: integer
+          description: Number of colors in this scheme.
+        colors:
+          type: array
+          description: Array of generated color objects.
+          items:
+            $ref: '#/components/schemas/ColorInfo'
+        seed:
+          $ref: '#/components/schemas/ColorInfo'
+          description: The input seed color with full color information.
+        image:
+          type: object
+          properties:
+            bare:
+              type: string
+              format: uri
+            named:
+              type: string
+              format: uri
+        links:
+          type: object
+          description: Hypermedia links to this scheme and all alternative scheme modes.
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  format: uri
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code.
+        message:
+          type: string
+          description: Error description.
+tags:
+  - name: Colors
+    description: Retrieve color information and format conversions for any color input.
+  - name: Schemes
+    description: Generate harmonious color palettes from a seed color using color theory.
