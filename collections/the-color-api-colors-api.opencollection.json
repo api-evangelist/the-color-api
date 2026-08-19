@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "The Color Colors API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Colors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Color Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.thecolorapi.com/id",
+            "params": [
+              {
+                "name": "hex",
+                "value": "0047AB",
+                "type": "query",
+                "description": "Color as a hex code without the"
+              },
+              {
+                "name": "rgb",
+                "value": "0,71,171",
+                "type": "query",
+                "description": "Color as comma-separated RGB values (e.g., 0,71,171) or rgb(0,71,171)."
+              },
+              {
+                "name": "hsl",
+                "value": "215,100%,34%",
+                "type": "query",
+                "description": "Color as HSL values (e.g., 215,100%,34%) or hsl(215,100%,34%)."
+              },
+              {
+                "name": "cmyk",
+                "value": "100,58,0,33",
+                "type": "query",
+                "description": "Color as CMYK values (e.g., 100,58,0,33) or cmyk(100,58,0,33)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format."
+              },
+              {
+                "name": "w",
+                "value": "",
+                "type": "query",
+                "description": "Image width in pixels for SVG format responses."
+              },
+              {
+                "name": "named",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include the color name on SVG image outputs."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP callback function name."
+              }
+            ]
+          },
+          "docs": "Retrieve comprehensive information for a color provided in any supported format (hex, RGB, HSL, or CMYK). Returns conversions to all other color formats, the nearest named color, image URLs, and contrast color."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

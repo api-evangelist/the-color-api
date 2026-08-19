@@ -1,0 +1,280 @@
+{
+  "item": [
+    {
+      "id": "96951dce-d873-4682-a439-31510d8119b2",
+      "name": "Schemes",
+      "description": {
+        "content": "Generate harmonious color palettes from a seed color using color theory.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "24b8a058-d41a-4d9c-af4e-ef9477e2381a",
+          "name": "Get Color Scheme",
+          "request": {
+            "name": "Get Color Scheme",
+            "description": {
+              "content": "Generate a harmonious color scheme from a seed color using color-wheel relationships. Supports monochrome, analogic, complement, triad, quad, and other scheme modes. Returns an array of color objects plus hypermedia links to all alternative scheme modes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scheme"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "hex",
+                  "value": "<string>",
+                  "description": "Seed color as hex code without"
+                },
+                {
+                  "disabled": false,
+                  "key": "rgb",
+                  "value": "<string>",
+                  "description": "Seed color as RGB (e.g., 0,71,171)."
+                },
+                {
+                  "disabled": false,
+                  "key": "hsl",
+                  "value": "<string>",
+                  "description": "Seed color as HSL (e.g., 215,100%,34%)."
+                },
+                {
+                  "disabled": false,
+                  "key": "cmyk",
+                  "value": "<string>",
+                  "description": "Seed color as CMYK (e.g., 100,58,0,33)."
+                },
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "monochrome",
+                  "description": "Color scheme generation mode based on color-wheel relationships."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "5",
+                  "description": "Number of colors to include in the scheme."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format."
+                },
+                {
+                  "disabled": false,
+                  "key": "w",
+                  "value": "100",
+                  "description": "Image width in pixels for SVG format."
+                },
+                {
+                  "disabled": false,
+                  "key": "named",
+                  "value": "true",
+                  "description": "Include color names on SVG images."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "JSONP callback function name."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29a0d7f5-56db-4e09-a5a3-4a896ad30ae9",
+              "name": "Generated color scheme with seed color, resulting colors, and scheme links.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scheme"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hex",
+                      "value": "0047AB"
+                    },
+                    {
+                      "key": "rgb",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hsl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cmyk",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "monochrome"
+                    },
+                    {
+                      "key": "count",
+                      "value": "5"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "w",
+                      "value": "100"
+                    },
+                    {
+                      "key": "named",
+                      "value": "true"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mode\": \"monochrome-dark\",\n  \"count\": 4684,\n  \"colors\": [\n    {\n      \"hex\": {\n        \"value\": \"string\",\n        \"clean\": \"string\"\n      },\n      \"rgb\": {\n        \"fraction\": {\n          \"r\": 331.5041481691483,\n          \"g\": 3537.425564960004,\n          \"b\": 7170.262110262062\n        },\n        \"r\": 8702,\n        \"g\": 5394,\n        \"b\": 266,\n        \"value\": \"string\"\n      },\n      \"hsl\": {\n        \"fraction\": {\n          \"h\": 898.6553313991108,\n          \"s\": 7281.66050053552,\n          \"l\": 3614.38641062237\n        },\n        \"h\": 359,\n        \"s\": 6692,\n        \"l\": 7473,\n        \"value\": \"string\"\n      },\n      \"name\": {\n        \"value\": \"string\",\n        \"closest_named_hex\": \"string\",\n        \"exact_match_name\": true,\n        \"distance\": 9339\n      },\n      \"hsv\": {\n        \"fraction\": {\n          \"h\": 1121.716388202364,\n          \"s\": 224.39345765269846,\n          \"v\": 1131.9105279589148\n        },\n        \"h\": 1059,\n        \"s\": 4603,\n        \"v\": 1471,\n        \"value\": \"string\"\n      },\n      \"cmyk\": {\n        \"fraction\": {\n          \"c\": 4852.016441065071,\n          \"m\": 9612.502828339964,\n          \"y\": 2403.4964517372105,\n          \"k\": 2722.9298165040273\n        },\n        \"c\": 7331,\n        \"m\": 8493,\n        \"y\": 1952,\n        \"k\": 6045,\n        \"value\": \"string\"\n      },\n      \"XYZ\": {\n        \"fraction\": {\n          \"X\": 6582.9161939622645,\n          \"Y\": 7220.122967087748,\n          \"Z\": 3270.834003628352\n        },\n        \"X\": 2689,\n        \"Y\": 6950,\n        \"Z\": 1775,\n        \"value\": \"string\"\n      },\n      \"image\": {\n        \"bare\": \"https://DPtybTnAMzMS.wmxDhOUjRRETZA8t-8gaFErnYhstJZ09vMXsIUB,+bsI+.snbg\",\n        \"named\": \"http://fUrldLPLADiyZakIAwrPiLVbMNlqMJFlB.zzsY,yr6uUn,E0un9uB56xjKyQc\"\n      },\n      \"contrast\": {\n        \"value\": \"string\"\n      },\n      \"links\": {\n        \"self\": {\n          \"href\": \"http://kBBPdRe.wzzenaBibgax2j7nmzV2ZOwntbXxy6rQtS2Ycdev9\"\n        }\n      }\n    },\n    {\n      \"hex\": {\n        \"value\": \"string\",\n        \"clean\": \"string\"\n      },\n      \"rgb\": {\n        \"fraction\": {\n          \"r\": 7718.440975619012,\n          \"g\": 8862.878406640688,\n          \"b\": 5791.973437875917\n        },\n        \"r\": 2477,\n        \"g\": 7563,\n        \"b\": 7527,\n        \"value\": \"string\"\n      },\n      \"hsl\": {\n        \"fraction\": {\n          \"h\": 9372.130267736462,\n          \"s\": 6962.215962730447,\n          \"l\": 4151.4918117560965\n        },\n        \"h\": 9605,\n        \"s\": 6501,\n        \"l\": 8353,\n        \"value\": \"string\"\n      },\n      \"name\": {\n        \"value\": \"string\",\n        \"closest_named_hex\": \"string\",\n        \"exact_match_name\": true,\n        \"distance\": 7466\n      },\n      \"hsv\": {\n        \"fraction\": {\n          \"h\": 8786.486688659219,\n          \"s\": 3901.1600207389165,\n          \"v\": 7560.59117331503\n        },\n        \"h\": 9714,\n        \"s\": 7261,\n        \"v\": 4009,\n        \"value\": \"string\"\n      },\n      \"cmyk\": {\n        \"fraction\": {\n          \"c\": 5569.855055831336,\n          \"m\": 4189.452830749615,\n          \"y\": 3466.4183567323803,\n          \"k\": 2637.556212915291\n        },\n        \"c\": 1630,\n        \"m\": 1201,\n        \"y\": 7151,\n        \"k\": 556,\n        \"value\": \"string\"\n      },\n      \"XYZ\": {\n        \"fraction\": {\n          \"X\": 6205.228732755232,\n          \"Y\": 6615.572669694742,\n          \"Z\": 2971.242242413905\n        },\n        \"X\": 6327,\n        \"Y\": 8171,\n        \"Z\": 863,\n        \"value\": \"string\"\n      },\n      \"image\": {\n        \"bare\": \"https://kaRRsEPewNOcjiHWnr.kjsopMkRQYC-vDi4c8WOQRCvpQ5-v6qUne1-T84OXa9l8vP,3RT,8,vtwPveVOUe\",\n        \"named\": \"http://TanyyGqBzFvZtLyPxszBobJ.efejrvEbllzAvKO,.nzgfZ4DY5s+lbCmRY8KLAzUDLMFuJRv3tUwQiTlDItYtTQCZzbw1qkar1whAiXFQL\"\n      },\n      \"contrast\": {\n        \"value\": \"string\"\n      },\n      \"links\": {\n        \"self\": {\n          \"href\": \"https://raaoj.kbQHJntFsHTJPa+0fl8SMCUdE4qnEPrvq5mxoSv4PyX68Jq1+pq\"\n        }\n      }\n    }\n  ],\n  \"seed\": {\n    \"hex\": {\n      \"value\": \"string\",\n      \"clean\": \"string\"\n    },\n    \"rgb\": {\n      \"fraction\": {\n        \"r\": 2540.5669173417045,\n        \"g\": 471.4501803691251,\n        \"b\": 5664.2327320700515\n      },\n      \"r\": 8033,\n      \"g\": 4710,\n      \"b\": 5212,\n      \"value\": \"string\"\n    },\n    \"hsl\": {\n      \"fraction\": {\n        \"h\": 7906.908517200637,\n        \"s\": 9613.472103801443,\n        \"l\": 1276.7495202204416\n      },\n      \"h\": 1777,\n      \"s\": 8005,\n      \"l\": 5480,\n      \"value\": \"string\"\n    },\n    \"name\": {\n      \"value\": \"string\",\n      \"closest_named_hex\": \"string\",\n      \"exact_match_name\": false,\n      \"distance\": 743\n    },\n    \"hsv\": {\n      \"fraction\": {\n        \"h\": 3423.577988871088,\n        \"s\": 7058.541440553952,\n        \"v\": 323.29614043753566\n      },\n      \"h\": 4978,\n      \"s\": 4718,\n      \"v\": 1092,\n      \"value\": \"string\"\n    },\n    \"cmyk\": {\n      \"fraction\": {\n        \"c\": 8369.402977170652,\n        \"m\": 6382.584307968019,\n        \"y\": 3714.8185514561374,\n        \"k\": 3504.4765421439806\n      },\n      \"c\": 4165,\n      \"m\": 7406,\n      \"y\": 4501,\n      \"k\": 9440,\n      \"value\": \"string\"\n    },\n    \"XYZ\": {\n      \"fraction\": {\n        \"X\": 1605.711139047611,\n        \"Y\": 6730.737595794937,\n        \"Z\": 5627.93452166132\n      },\n      \"X\": 2874,\n      \"Y\": 8383,\n      \"Z\": 3216,\n      \"value\": \"string\"\n    },\n    \"image\": {\n      \"bare\": \"https://KcgWqfkVGUxgj.qbkPlcw,OgnP6uI3JnmBzPb5c7YK3sX4xmYzJ8iS-qt1w1sfum\",\n      \"named\": \"http://gFPYsAYxxAguztdMAznF.fdab2e2+q1ukEs,fX,mZkctOD--BidJALPO5IkW1-pKJnk-q1mEv48N-CWIpPs-rZ77o\"\n    },\n    \"contrast\": {\n      \"value\": \"string\"\n    },\n    \"links\": {\n      \"self\": {\n        \"href\": \"http://eRTXRLqPtHzaLOIR.goCwafhrgiWGMbnkFkNylp8pUOqm.3aLWFN1nz4JGOaS-usk6\"\n      }\n    }\n  },\n  \"image\": {\n    \"bare\": \"http://rzwbrvUMPHBDx.uymnBG5m4BFigtOKIOXDmOq3jSIjtudiSfaiFgzEDzwKq8haXRYtRi5nM7YQH\",\n    \"named\": \"https://eYpAzvazgRXFOcOifxOSmtbqYuBMD.phnB-pVb-DD+4SmlXqhSyIhkf4-rbE\"\n  },\n  \"links\": {\n    \"self\": {\n      \"href\": \"https://tdYPIqxVYIVyoIKAwKfzczmMjzg.eqI,tQgBPwnzNWrUj5sWyA0CIJ8YzVdXQVghpZp30fVV5I\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e185a1b-1e52-4757-90b3-86f2a9121e62",
+              "name": "Bad request — missing or invalid color input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scheme"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hex",
+                      "value": "0047AB"
+                    },
+                    {
+                      "key": "rgb",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hsl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cmyk",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "monochrome"
+                    },
+                    {
+                      "key": "count",
+                      "value": "5"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "w",
+                      "value": "100"
+                    },
+                    {
+                      "key": "named",
+                      "value": "true"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 936,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.thecolorapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9a585353-ed50-4975-bd31-aca0b9feba9a",
+    "name": "The Color Colors Schemes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Color API is a free, public REST API for color data. Pass in any valid color in hex, RGB, HSL, or CMYK format and receive full color information including conversions to all other formats, the nearest named color, placeholder image URLs, and harmonious color schemes generated using color-wheel relationships.\n\nContact Support:\n Name: The Color API",
+      "type": "text/plain"
+    }
+  }
+}

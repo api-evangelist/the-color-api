@@ -1,0 +1,252 @@
+{
+  "item": [
+    {
+      "id": "b2255453-c820-4a2e-8c18-6517948c7495",
+      "name": "Colors",
+      "description": {
+        "content": "Retrieve color information and format conversions for any color input.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1787ddfb-bd9f-4299-81b8-6a8bbb0507d6",
+          "name": "Get Color Information",
+          "request": {
+            "name": "Get Color Information",
+            "description": {
+              "content": "Retrieve comprehensive information for a color provided in any supported format (hex, RGB, HSL, or CMYK). Returns conversions to all other color formats, the nearest named color, image URLs, and contrast color.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "hex",
+                  "value": "<string>",
+                  "description": "Color as a hex code without the"
+                },
+                {
+                  "disabled": false,
+                  "key": "rgb",
+                  "value": "<string>",
+                  "description": "Color as comma-separated RGB values (e.g., 0,71,171) or rgb(0,71,171)."
+                },
+                {
+                  "disabled": false,
+                  "key": "hsl",
+                  "value": "<string>",
+                  "description": "Color as HSL values (e.g., 215,100%,34%) or hsl(215,100%,34%)."
+                },
+                {
+                  "disabled": false,
+                  "key": "cmyk",
+                  "value": "<string>",
+                  "description": "Color as CMYK values (e.g., 100,58,0,33) or cmyk(100,58,0,33)."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format."
+                },
+                {
+                  "disabled": false,
+                  "key": "w",
+                  "value": "100",
+                  "description": "Image width in pixels for SVG format responses."
+                },
+                {
+                  "disabled": false,
+                  "key": "named",
+                  "value": "true",
+                  "description": "Whether to include the color name on SVG image outputs."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "JSONP callback function name."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb14ab1d-2839-478f-8636-433d5c0a6bab",
+              "name": "Full color information including all format conversions, name, and images.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hex",
+                      "value": "0047AB"
+                    },
+                    {
+                      "key": "rgb",
+                      "value": "0,71,171"
+                    },
+                    {
+                      "key": "hsl",
+                      "value": "215,100%,34%"
+                    },
+                    {
+                      "key": "cmyk",
+                      "value": "100,58,0,33"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "w",
+                      "value": "100"
+                    },
+                    {
+                      "key": "named",
+                      "value": "true"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hex\": {\n    \"value\": \"string\",\n    \"clean\": \"string\"\n  },\n  \"rgb\": {\n    \"fraction\": {\n      \"r\": 4744.041646856341,\n      \"g\": 6563.970053443213,\n      \"b\": 5501.711179808617\n    },\n    \"r\": 4931,\n    \"g\": 1313,\n    \"b\": 5843,\n    \"value\": \"string\"\n  },\n  \"hsl\": {\n    \"fraction\": {\n      \"h\": 4153.16489948665,\n      \"s\": 7262.488681497273,\n      \"l\": 7398.394749486187\n    },\n    \"h\": 7290,\n    \"s\": 1424,\n    \"l\": 7418,\n    \"value\": \"string\"\n  },\n  \"name\": {\n    \"value\": \"string\",\n    \"closest_named_hex\": \"string\",\n    \"exact_match_name\": false,\n    \"distance\": 7294\n  },\n  \"hsv\": {\n    \"fraction\": {\n      \"h\": 9579.548785765099,\n      \"s\": 5473.393695209985,\n      \"v\": 9121.37281062798\n    },\n    \"h\": 9832,\n    \"s\": 2305,\n    \"v\": 2837,\n    \"value\": \"string\"\n  },\n  \"cmyk\": {\n    \"fraction\": {\n      \"c\": 7914.266571711292,\n      \"m\": 761.7722866268728,\n      \"y\": 8531.999560192236,\n      \"k\": 5931.851308328665\n    },\n    \"c\": 8468,\n    \"m\": 845,\n    \"y\": 2279,\n    \"k\": 141,\n    \"value\": \"string\"\n  },\n  \"XYZ\": {\n    \"fraction\": {\n      \"X\": 550.7632798845141,\n      \"Y\": 6816.173373789792,\n      \"Z\": 6681.076964230153\n    },\n    \"X\": 2706,\n    \"Y\": 336,\n    \"Z\": 8577,\n    \"value\": \"string\"\n  },\n  \"image\": {\n    \"bare\": \"https://Gyg.bsoRNkYQjT+cDV7Tys+5SWA4iDiLuSYYG.hvh0pCpwf+ifXuMgiwoWHNWBp\",\n    \"named\": \"https://E.dzVT3aJpvKdxWi2Qv6-54gA9veJqHg9Et\"\n  },\n  \"contrast\": {\n    \"value\": \"string\"\n  },\n  \"links\": {\n    \"self\": {\n      \"href\": \"https://kdTGYOAOBFYzmmqpmbphPQ.kkblhNvWEpfurr\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e560d1f-0042-4382-8d34-8fc7b8e4f7e8",
+              "name": "Bad request — no color parameters provided or invalid values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hex",
+                      "value": "0047AB"
+                    },
+                    {
+                      "key": "rgb",
+                      "value": "0,71,171"
+                    },
+                    {
+                      "key": "hsl",
+                      "value": "215,100%,34%"
+                    },
+                    {
+                      "key": "cmyk",
+                      "value": "100,58,0,33"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "w",
+                      "value": "100"
+                    },
+                    {
+                      "key": "named",
+                      "value": "true"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 9269,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.thecolorapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a0d0ae28-2b79-4146-87d7-85522749e8a1",
+    "name": "The Color Colors API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Color API is a free, public REST API for color data. Pass in any valid color in hex, RGB, HSL, or CMYK format and receive full color information including conversions to all other formats, the nearest named color, placeholder image URLs, and harmonious color schemes generated using color-wheel relationships.\n\nContact Support:\n Name: The Color API",
+      "type": "text/plain"
+    }
+  }
+}
