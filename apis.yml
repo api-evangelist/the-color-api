@@ -4,6 +4,17 @@ description: >-
   Pass in any valid color and get conversion into any other format, the name of the color, placeholder images and a
   multitude of schemes.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
