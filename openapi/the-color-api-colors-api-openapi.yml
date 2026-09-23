@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: The Color Colors API
+  title: Colors API
   description: The Color API is a free, public REST API for color data. Pass in any valid color in hex, RGB, HSL, or CMYK format and receive full color information including conversions to all other formats, the nearest named color, placeholder image URLs, and harmonious color schemes generated using color-wheel relationships.
   version: 1.0.0
   contact:

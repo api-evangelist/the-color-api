@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: The Color Colors Schemes API
+  title: Color Schemes API
   description: The Color API is a free, public REST API for color data. Pass in any valid color in hex, RGB, HSL, or CMYK format and receive full color information including conversions to all other formats, the nearest named color, placeholder image URLs, and harmonious color schemes generated using color-wheel relationships.
   version: 1.0.0
   contact:
@@ -129,52 +129,6 @@ components:
         message:
           type: string
           description: Error description.
-    ColorScheme:
-      type: object
-      description: A generated color scheme with seed color, resulting colors, and navigation links.
-      properties:
-        mode:
-          type: string
-          description: The color scheme mode used to generate this palette.
-          enum:
-          - monochrome
-          - monochrome-dark
-          - monochrome-light
-          - analogic
-          - complement
-          - analogic-complement
-          - triad
-          - quad
-        count:
-          type: integer
-          description: Number of colors in this scheme.
-        colors:
-          type: array
-          description: Array of generated color objects.
-          items:
-            $ref: '#/components/schemas/ColorInfo'
-        seed:
-          $ref: '#/components/schemas/ColorInfo'
-          description: The input seed color with full color information.
-        image:
-          type: object
-          properties:
-            bare:
-              type: string
-              format: uri
-            named:
-              type: string
-              format: uri
-        links:
-          type: object
-          description: Hypermedia links to this scheme and all alternative scheme modes.
-          properties:
-            self:
-              type: object
-              properties:
-                href:
-                  type: string
-                  format: uri
     ColorInfo:
       type: object
       description: Full color information including all format conversions, naming, and image references.
@@ -377,3 +331,49 @@ components:
       - rgb
       - hsl
       - name
+    ColorScheme:
+      type: object
+      description: A generated color scheme with seed color, resulting colors, and navigation links.
+      properties:
+        mode:
+          type: string
+          description: The color scheme mode used to generate this palette.
+          enum:
+          - monochrome
+          - monochrome-dark
+          - monochrome-light
+          - analogic
+          - complement
+          - analogic-complement
+          - triad
+          - quad
+        count:
+          type: integer
+          description: Number of colors in this scheme.
+        colors:
+          type: array
+          description: Array of generated color objects.
+          items:
+            $ref: '#/components/schemas/ColorInfo'
+        seed:
+          $ref: '#/components/schemas/ColorInfo'
+          description: The input seed color with full color information.
+        image:
+          type: object
+          properties:
+            bare:
+              type: string
+              format: uri
+            named:
+              type: string
+              format: uri
+        links:
+          type: object
+          description: Hypermedia links to this scheme and all alternative scheme modes.
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  format: uri
