@@ -33,7 +33,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/the-color-
 tags:
   - Colors
   - Design
-  - Utilities
+  - Developer Tools
 created: '2025-02-12'
 modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/the-color-api/refs/heads/main/apis.yml
@@ -43,7 +43,6 @@ apis:
   name: The Color API Colors API
   description: Retrieve color information and format conversions for any color input.
   humanURL: https://www.thecolorapi.com/
-  baseURL: https://www.thecolorapi.com
   tags:
   - Colors
   properties:
@@ -57,7 +56,6 @@ apis:
   name: The Color API Schemes API
   description: Generate harmonious color palettes from a seed color using color theory.
   humanURL: https://www.thecolorapi.com/
-  baseURL: https://www.thecolorapi.com
   tags:
   - Schemes
   properties:
