@@ -120,6 +120,52 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    ColorScheme:
+      type: object
+      description: A generated color scheme with seed color, resulting colors, and navigation links.
+      properties:
+        mode:
+          type: string
+          description: The color scheme mode used to generate this palette.
+          enum:
+          - monochrome
+          - monochrome-dark
+          - monochrome-light
+          - analogic
+          - complement
+          - analogic-complement
+          - triad
+          - quad
+        count:
+          type: integer
+          description: Number of colors in this scheme.
+        colors:
+          type: array
+          description: Array of generated color objects.
+          items:
+            $ref: '#/components/schemas/ColorInfo'
+        seed:
+          $ref: '#/components/schemas/ColorInfo'
+          description: The input seed color with full color information.
+        image:
+          type: object
+          properties:
+            bare:
+              type: string
+              format: uri
+            named:
+              type: string
+              format: uri
+        links:
+          type: object
+          description: Hypermedia links to this scheme and all alternative scheme modes.
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  format: uri
     Error:
       type: object
       properties:
@@ -331,49 +377,3 @@ components:
       - rgb
       - hsl
       - name
-    ColorScheme:
-      type: object
-      description: A generated color scheme with seed color, resulting colors, and navigation links.
-      properties:
-        mode:
-          type: string
-          description: The color scheme mode used to generate this palette.
-          enum:
-          - monochrome
-          - monochrome-dark
-          - monochrome-light
-          - analogic
-          - complement
-          - analogic-complement
-          - triad
-          - quad
-        count:
-          type: integer
-          description: Number of colors in this scheme.
-        colors:
-          type: array
-          description: Array of generated color objects.
-          items:
-            $ref: '#/components/schemas/ColorInfo'
-        seed:
-          $ref: '#/components/schemas/ColorInfo'
-          description: The input seed color with full color information.
-        image:
-          type: object
-          properties:
-            bare:
-              type: string
-              format: uri
-            named:
-              type: string
-              format: uri
-        links:
-          type: object
-          description: Hypermedia links to this scheme and all alternative scheme modes.
-          properties:
-            self:
-              type: object
-              properties:
-                href:
-                  type: string
-                  format: uri
