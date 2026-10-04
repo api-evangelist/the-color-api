@@ -98,15 +98,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code.
-        message:
-          type: string
-          description: Error description.
     ColorInfo:
       type: object
       description: Full color information including all format conversions, naming, and image references.
@@ -309,3 +300,12 @@ components:
       - rgb
       - hsl
       - name
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code.
+        message:
+          type: string
+          description: Error description.
