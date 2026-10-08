@@ -66,6 +66,12 @@ apis:
   - type: Website
     url: https://www.thecolorapi.com/
 common:
+  - type: Plans
+    url: plans/the-color-api-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/the-color-api-rate-limits.yml
+  - type: FinOps
+    url: finops/the-color-api-finops.yml
   - type: AgenticAccess
     url: agentic-access/the-color-api-agentic-access.yml
   - type: DomainSecurity
